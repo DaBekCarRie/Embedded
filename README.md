@@ -1,4 +1,30 @@
-# Embedded
-Embedded project
+        - WiFi.h
+        - HTTPClient.h
+        - Adafruit_GFX.h
+        - Adafruit_SSD1306.h
+        - Wire.h
+        - WiFiServer.h
+        - WiFiUdp.h
+        - ESPAsyncWebServer.h
 
-### ตั้งเป็น private ต้อง hash password กับ token ก่อน
+    - อุปกรณ์ที่ใช้ใ
+        - NodeMCU ESP32
+        - Thermistor
+        - Resistor 120 Ω
+        - OLED
+    - Library
+        - Wire.h
+        - Adafruit_SSD1306.h
+        - WiFi.h
+        - NTPClient.h
+        - WiFiUdp.h
+
+        - WiFi.h
+        - WiFiClient.h
+        - WiFiServer.h
+        - WiFiUdp.h
+        - HTTPClient.h
+        - Wire.h
+        - Adafruit_GFX.h
+        - Adafruit_SSD1306.h
+        - NTPClient.h
