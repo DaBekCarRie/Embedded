@@ -5,8 +5,8 @@ const express = require('express');
 
 // create LINE SDK config from env variables
 const config = {
-  channelAccessToken: "COfu9/s2C0uKvsOkkgUmyI44TTlNPVv6W1f7lqgJGWEe7L6ziUIn4njxyKIb29N4HlxlYrcu4Yiti2Bq1QFt2rXHnzmlS0eApTj7Ql9ptJHjj+R4ut2VqrN+/aKg3Gr0VmGlXRYPwq5qzuqIRd4IrAdB04t89/1O/w1cDnyilFU=",
-  channelSecret: "8556acf116c5a6777d14d7263c5b5dfb",
+  channelAccessToken: "",//your own token
+  channelSecret: "",//your own secret key
 };
 
 // create LINE SDK client
@@ -37,8 +37,8 @@ function handleEvent(event) {
       type: "text",
       text: "Acticated System!",
     }
-    getToggle("toggle-pir","172.20.10.11");
-    getToggle("toggle-ldr","172.20.10.4");
+    getToggle("toggle-pir","...");//pir board ip
+    getToggle("toggle-ldr","...");//ldr board ip
     return client.replyMessage(event.replyToken, payload);
   }
   else if(event.type == "message" && event.message.text == "System Off") {
@@ -46,8 +46,8 @@ function handleEvent(event) {
       type: "text",
       text: "Deacticated System!",
     }
-    getToggle("toggle-pir","172.20.10.11");
-    getToggle("toggle-ldr","172.20.10.4");
+    getToggle("toggle-pir","...");//pir board ip
+    getToggle("toggle-ldr","...");//ldr board ip
     
     return client.replyMessage(event.replyToken, payload);
   }
@@ -56,47 +56,11 @@ function handleEvent(event) {
       type: "text",
       text: "Dismissed!",
     }
-    getToggle("toggle-light","172.20.10.11");
+    getToggle("toggle-light","...");//pir board ip
 
     return client.replyMessage(event.replyToken, payload);
     }
-    // fake pir
-  else if(event.type == "message" && event.message.text == "pir1"){
-    const payload = {
-      type: "text",
-      text: "pir1",
-    }
-    getToggle("toggle-pir1","172.20.10.11");
 
-    return client.replyMessage(event.replyToken, payload);
-    }
-  else if(event.type == "message" && event.message.text == "pir2"){
-    const payload = {
-      type: "text",
-      text: "pir2",
-    }
-    getToggle("toggle-pir2","172.20.10.11");
-
-    return client.replyMessage(event.replyToken, payload);
-    }
-  else if(event.type == "message" && event.message.text == "pir3"){
-    const payload = {
-      type: "text",
-      text: "pir3",
-    }
-    getToggle("toggle-pir3","172.20.10.11");
-
-    return client.replyMessage(event.replyToken, payload);
-    }
-  else if(event.type == "message" && event.message.text == "off"){
-    const payload = {
-      type: "text",
-      text: "off",
-    }
-    getToggle("toggle-off","172.20.10.11");
-
-    return client.replyMessage(event.replyToken, payload);
-    }
 }
 // listen on port
 const port = process.env.PORT || 3000;
@@ -110,9 +74,6 @@ function getToggle(str,ip){
     const axios = require('axios');
     // Define the IP address and port of the ESP32
     const ipAddress = ip;
-    // e8:68:e7:22:b8:e0 Laser
-    // 3c:61:5:3:ae:80 Temp
-    // e8:db:84:0:f3:1c Pir
     const port = '80';
     // Define the endpoint to toggle the LED
     const toggleLedEndpoint = `http://${ipAddress}:${port}/${str}`;
